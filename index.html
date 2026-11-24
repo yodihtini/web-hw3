@@ -1,1 +1,105 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 영화 보드</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <header class="top">
+        <h1>내 영화 보드</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#board">보드</a></li>
+                <li><a href="#about">소개</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>요즘 내가 고른 영화 다섯 편</h2>
+        <p>영화를 검색하고, 정렬하고, 마음에 드는 영화를 찜해 보세요.</p>
+    </section>
+
+    <main>
+
+        <div class="toolbar">
+
+            <input id="q" type="search" placeholder="영화 제목 검색">
+
+            <fieldset id="typeFilter">
+                <legend>보기</legend>
+
+                <label>
+                    <input type="radio" name="type" value="all" checked>
+                    전체
+                </label>
+
+                <label>
+                    <input type="radio" name="type" value="mine">
+                    내 영화
+                </label>
+
+                <label>
+                    <input type="radio" name="type" value="boxoffice">
+                    박스오피스
+                </label>
+            </fieldset>
+
+            <label for="sort">정렬</label>
+
+            <select id="sort">
+                <option value="rating">평점순</option>
+                <option value="year">최신 개봉순</option>
+                <option value="title">제목 가나다순</option>
+            </select>
+
+            <p>
+                <span id="count">0편</span>,
+                찜 <span id="likeCount">0</span>편
+            </p>
+
+        </div>
+
+        <section class="board" id="board"></section>
+
+        <p class="state-empty">
+            조건에 맞는 영화가 없습니다.
+        </p>
+
+        <section id="about">
+            <h2>이 보드에 대하여</h2>
+            <p>내가 좋아하는 영화와 박스오피스 영화를 모아 놓은 영화 보드입니다.</p>
+            <p>포스터와 영화 정보: TMDB</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            This product uses the TMDB API but is not endorsed or certified by TMDB.
+        </p>
+        <p>포스터와 영화 정보: TMDB (https://www.themoviedb.org)</p>
+    </footer>
+
+    <dialog id="detail">
+        <div id="detailBody"></div>
+        <button type="button" id="closeDetail">닫기</button>
+    </dialog>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+</html>

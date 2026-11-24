@@ -1,1 +1,270 @@
 
+body {
+    background: linear-gradient(135deg, #141e30, #243b55);
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 16px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #f5f5f5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1, footer {
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg");
+
+    background-size: cover;
+    background-position: center;
+    min-height: 40vh;
+    padding: 24px;
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main, .top, .hero, footer {
+    max-width: 1100px;
+    margin: 0 auto 24px;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+    margin: 24px 0;
+    background: #303746;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.toolbar input[type="search"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    min-width: 180px;
+    flex: 1;
+}
+
+.toolbar fieldset {
+    display: flex;
+    gap: 12px;
+    border: 1px solid #596477;
+    border-radius: 8px;
+}
+
+.toolbar label,
+.toolbar input,
+.toolbar select {
+    cursor: pointer;
+}
+
+.toolbar select {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #222;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(255, 193, 7, 0.5);
+}
+
+.poster {
+    width: 100%;
+    display: block;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.poster-fallback {
+    aspect-ratio: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: #303746;
+    color: #fff;
+    text-align: center;
+}
+
+.info {
+    padding: 12px;
+}
+
+.info h3 {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffc107;
+    color: #222;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.card.hot .badge {
+    background: crimson;
+    color: #fff;
+}
+
+.rank {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #222;
+    color: #fff;
+    padding: 4px 9px;
+    border-radius: 5px;
+}
+
+.like {
+    border: none;
+    background: none;
+    color: #bbb;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.like.liked {
+    color: crimson;
+}
+
+.state-empty {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    color: #fff;
+}
+
+.board.is-empty + .state-empty {
+    display: block;
+}
+
+#about {
+    margin-top: 60px;
+}
+
+footer {
+    font-size: 0.8rem;
+}
+
+#detail {
+    width: min(90%, 450px);
+    max-height: 90vh;
+    overflow-y: auto;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+#detail::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#detail img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+#detail h2 {
+    font-size: 1.4rem;
+}
+
+#detail button {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+@media (min-width: 600px) {
+    .board {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        min-height: 60vh;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .toolbar fieldset {
+        flex-wrap: wrap;
+    }
+
+    .top {
+        flex-direction: column;
+    }
+}
